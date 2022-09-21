@@ -41,7 +41,23 @@ public class PropertyController {
     @PutMapping("/update/{propertyId}") //full update
     public ResponseEntity<PropertyModel> updateProperty(@RequestBody PropertyModel propertyModel, @PathVariable Long propertyId) {
         propertyModel = propertyService.updateProperty(propertyModel, propertyId);
-        ResponseEntity<PropertyModel> resp = new ResponseEntity<PropertyModel>(propertyModel, HttpStatus.CREATED);
+        ResponseEntity<PropertyModel> resp = new ResponseEntity<PropertyModel>(propertyModel, HttpStatus.OK);
+        return resp;
+    }
+
+    //http://localhost:8080/api/v1/properties/update-description/1
+    @PatchMapping("/update-description/{propertyId}") //full update
+    public ResponseEntity<PropertyModel> updatePropertyDescription(@RequestBody PropertyModel propertyModel, @PathVariable Long propertyId) {
+        propertyModel = propertyService.updatePropertyDescription(propertyModel, propertyId);
+        ResponseEntity<PropertyModel> resp = new ResponseEntity<PropertyModel>(propertyModel, HttpStatus.OK);
+        return resp;
+    }
+
+    //http://localhost:8080/api/v1/properties/update-description/1
+    @PatchMapping("/update-price/{propertyId}") //full update
+    public ResponseEntity<PropertyModel> updatePropertyPrice(@RequestBody PropertyModel propertyModel, @PathVariable Long propertyId) {
+        propertyModel = propertyService.updatePropertyPrice(propertyModel, propertyId);
+        ResponseEntity<PropertyModel> resp = new ResponseEntity<PropertyModel>(propertyModel, HttpStatus.OK);
         return resp;
     }
 }

@@ -58,4 +58,32 @@ public class PropertyServiceImpl implements PropertyService {
         }
         return propertyModel;
     }
+
+    @Override
+    public PropertyModel updatePropertyDescription(PropertyModel propertyModel, Long propertyId) {
+        //this is partial  update
+        Optional<PropertyEntity> optEn = propertyRepository.findById(propertyId); //data from db
+        PropertyModel dto = null;
+        if (optEn.isPresent()) {
+            PropertyEntity pe = optEn.get();
+            pe.setDescription(propertyModel.getDescription());
+            dto = propertyConverter.convertEntityToDto(pe);
+            propertyRepository.save(pe);
+        }
+        return dto;
+    }
+
+    @Override
+    public PropertyModel updatePropertyPrice(PropertyModel propertyModel, Long propertyId) {
+        //this is partial update
+        Optional<PropertyEntity> optEn = propertyRepository.findById(propertyId); //data from db
+        if (optEn.isPresent()) {
+            PropertyEntity pe = optEn.get();
+            pe.setPrice(propertyModel.getPrice());
+            propertyRepository.save(pe);
+            //setting dto data
+            propertyModel = propertyConverter.convertEntityToDto(pe);
+        }
+        return propertyModel;
+    }
 }
