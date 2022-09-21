@@ -25,4 +25,12 @@ public class UserController {
         return resp;
     }
 
+    //http://localhost:8080/api/v1/user/register
+    @PostMapping("/login")
+    public ResponseEntity<UserDto> login(@RequestBody UserDto userDto) {
+        userDto = userService.login(userDto.getOwnerEmail(),userDto.getPassword());
+        ResponseEntity<UserDto> resp = new ResponseEntity<UserDto>(userDto, HttpStatus.CREATED);
+        return resp;
+    }
+
 }
