@@ -7,17 +7,17 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "PROPERTY_TABLE")
+@Table(name = "USER_TABLE")
 @Getter
 @Setter
 @NoArgsConstructor
-public class PropertyEntity {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) //AUTO is basically it will use as SEQUENCE
     private Long id;
-    @Column(name = "PROPERTY_TITLE", nullable = false, length = 40)
-    private String title;
-    private String description;
-    private String price;
-    private String address;
+    private String ownerName;
+    @Column(name = "PROPERTY_EMAIL", nullable = false)
+    private String ownerEmail;
+    private String phone;
+    private String password;
 }
