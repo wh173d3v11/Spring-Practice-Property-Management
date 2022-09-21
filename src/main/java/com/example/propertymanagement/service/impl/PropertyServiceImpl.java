@@ -41,7 +41,7 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public PropertyModel updateProperty(PropertyModel propertyModel, Long propertyId) {
-
+        //this is full update
         Optional<PropertyEntity> optEn = propertyRepository.findById(propertyId); //data from db
         if (optEn.isPresent()) {
             PropertyEntity pe = optEn.get();

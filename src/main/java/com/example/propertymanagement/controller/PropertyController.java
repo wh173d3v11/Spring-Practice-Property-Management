@@ -38,7 +38,7 @@ public class PropertyController {
     }
 
     //http://localhost:8080/api/v1/properties/update/1
-    @PutMapping("/update/{propertyId}")
+    @PutMapping("/update/{propertyId}") //full update
     public ResponseEntity<PropertyModel> updateProperty(@RequestBody PropertyModel propertyModel, @PathVariable Long propertyId) {
         propertyModel = propertyService.updateProperty(propertyModel, propertyId);
         ResponseEntity<PropertyModel> resp = new ResponseEntity<PropertyModel>(propertyModel, HttpStatus.CREATED);
