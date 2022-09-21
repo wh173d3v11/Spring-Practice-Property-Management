@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1/calculator")
 public class CalculatorController {
 
+
     @GetMapping("/add") //query parameter
     public Double add(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
         return num1 + num2;

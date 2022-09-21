@@ -3,6 +3,7 @@ package com.example.propertymanagement.controller;
 import com.example.propertymanagement.model.PropertyModel;
 import com.example.propertymanagement.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/properties")
 public class PropertyController {
+
+    //from application configuration ":" -> if we used colon, if variable not present in configuration file, it wont throw error or null
+    @Value("${pms.dummy:}")
+    private String dummy;
 
     @Autowired
     private PropertyService propertyService;
@@ -32,6 +37,7 @@ public class PropertyController {
     //http://localhost:8080/api/v1/properties/all
     @GetMapping("/all")
     public ResponseEntity<List<PropertyModel>> getAllProperties() {
+        System.out.println(dummy);
         List<PropertyModel> propertiesList = propertyService.getAllProperties();
         ResponseEntity<List<PropertyModel>> resp = new ResponseEntity<List<PropertyModel>>(propertiesList, HttpStatus.OK);
         return resp;
