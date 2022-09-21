@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 
 @Component //singleton
 public class PropertyConverter {
-
-    public PropertyEntity convertDtoToEntity(PropertyModel propertyModel){
-        //converting DTO to Entity is called Adapter Pattern.
+//Adapter Pattern design.
+    public PropertyEntity convertDtoToEntity(PropertyModel propertyModel) {
+        //converting DTO to Entity is also called Adapter Pattern.
         PropertyEntity pe = new PropertyEntity();
         pe.setTitle(propertyModel.getTitle());
         pe.setAddress(propertyModel.getAddress());
@@ -17,5 +17,18 @@ public class PropertyConverter {
         pe.setOwnerName(propertyModel.getOwnerName());
         pe.setPrice(propertyModel.getPrice());
         return pe;
+    }
+
+    public PropertyModel convertEntityToDto(PropertyEntity propertyEntity) {
+        //converting Entity to DTO is also called Adapter Pattern.
+        PropertyModel pm = new PropertyModel();
+        pm.setId(propertyEntity.getId());
+        pm.setTitle(propertyEntity.getTitle());
+        pm.setAddress(propertyEntity.getAddress());
+        pm.setDescription(propertyEntity.getDescription());
+        pm.setOwnerEmail(propertyEntity.getOwnerEmail());
+        pm.setOwnerName(propertyEntity.getOwnerName());
+        pm.setPrice(propertyEntity.getPrice());
+        return pm;
     }
 }

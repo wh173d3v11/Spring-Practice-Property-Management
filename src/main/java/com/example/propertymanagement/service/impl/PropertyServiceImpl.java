@@ -1,6 +1,7 @@
 package com.example.propertymanagement.service.impl;
 
 import com.example.propertymanagement.converter.PropertyConverter;
+import com.example.propertymanagement.entity.PropertyEntity;
 import com.example.propertymanagement.model.PropertyModel;
 import com.example.propertymanagement.repository.PropertyRepository;
 import com.example.propertymanagement.service.PropertyService;
@@ -17,7 +18,9 @@ public class PropertyServiceImpl implements PropertyService {
     @Override
     public PropertyModel saveProperty(PropertyModel propertyModel) {
         //converting DTO to Entity is called Adapter Pattern.
-        propertyRepository.save(propertyConverter.convertDtoToEntity(propertyModel));
-        return null;
+        PropertyEntity pe = propertyRepository.save(propertyConverter.convertDtoToEntity(propertyModel));
+
+        propertyModel = propertyConverter.convertEntityToDto(pe);
+        return propertyModel;
     }
 }

@@ -6,10 +6,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PropertyModel {
-    String title;
-    String description;
-    String ownerName;
-    String ownerEmail;
-    String price;
-    String address;
+    private Long id;
+    private String title;
+    private String description;
+    private String ownerName;
+    private String ownerEmail;
+    private String price;
+    private String address;
 }
