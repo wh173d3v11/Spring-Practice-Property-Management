@@ -8,6 +8,9 @@ import com.example.propertymanagement.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service //-- Singleton purpose.
 public class PropertyServiceImpl implements PropertyService {
     @Autowired
@@ -22,5 +25,16 @@ public class PropertyServiceImpl implements PropertyService {
 
         propertyModel = propertyConverter.convertEntityToDto(pe);
         return propertyModel;
+    }
+
+    @Override
+    public List<PropertyModel> getAllProperties() {
+        List<PropertyEntity> listOfProperty = (List<PropertyEntity>) propertyRepository.findAll();
+        List<PropertyModel> pmList = new ArrayList<>();
+        for (PropertyEntity pe : listOfProperty) {
+            PropertyModel pmodel = propertyConverter.convertEntityToDto(pe);
+            pmList.add(pmodel);
+        }
+        return pmList;
     }
 }
