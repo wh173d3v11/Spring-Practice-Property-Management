@@ -60,4 +60,12 @@ public class PropertyController {
         ResponseEntity<PropertyModel> resp = new ResponseEntity<PropertyModel>(propertyModel, HttpStatus.OK);
         return resp;
     }
+
+    //http://localhost:8080/api/v1/properties/delete-property/1
+    @DeleteMapping("/delete-property/{propertyId}")
+    public ResponseEntity<String> deleteProperty(@PathVariable Long propertyId) {
+        propertyService.deleteProperty(propertyId);
+        ResponseEntity<String> resp = new ResponseEntity<String>("Success", HttpStatus.OK);
+        return resp;
+    }
 }

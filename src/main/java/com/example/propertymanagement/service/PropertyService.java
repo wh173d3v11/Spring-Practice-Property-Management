@@ -11,7 +11,10 @@ public interface PropertyService {
     List<PropertyModel> getAllProperties();
 
     PropertyModel updateProperty(PropertyModel propertyModel, Long propertyId);
+
     PropertyModel updatePropertyDescription(PropertyModel propertyModel, Long propertyId);
+
     PropertyModel updatePropertyPrice(PropertyModel propertyModel, Long propertyId);
 
+    void deleteProperty(Long propertyId);
 }

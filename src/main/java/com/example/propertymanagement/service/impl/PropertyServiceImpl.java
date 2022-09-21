@@ -86,4 +86,9 @@ public class PropertyServiceImpl implements PropertyService {
         }
         return propertyModel;
     }
+
+    @Override
+    public void deleteProperty(Long propertyId) {
+        propertyRepository.deleteById(propertyId);
+    }
 }
