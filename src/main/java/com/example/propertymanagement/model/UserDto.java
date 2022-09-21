@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true) //JsonIgnoreProperties and JsonInclude - sending only needed variables and ignore all null variables.
 public class UserDto {
     private Long id;
     private String ownerName;
