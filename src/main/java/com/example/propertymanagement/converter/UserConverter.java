@@ -18,10 +18,10 @@ public class UserConverter {
 
     public UserDto convertEntityToDto(UserEntity userEntity) {
         UserDto userDto = new UserDto();
+        userDto.setId(userEntity.getId());
         userDto.setOwnerEmail(userEntity.getOwnerEmail());
         userDto.setOwnerName(userEntity.getOwnerName());
         userDto.setPhone(userEntity.getPhone());
-        userDto.setPassword(userEntity.getPassword());
         return userDto;
     }
 }
