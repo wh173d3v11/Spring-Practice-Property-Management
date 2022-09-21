@@ -28,11 +28,20 @@ public class PropertyController {
         ResponseEntity<PropertyModel> resp = new ResponseEntity<PropertyModel>(propertyModel, HttpStatus.CREATED);
         return resp;
     }
+
     //http://localhost:8080/api/v1/properties/all
     @GetMapping("/all")
     public ResponseEntity<List<PropertyModel>> getAllProperties() {
         List<PropertyModel> propertiesList = propertyService.getAllProperties();
         ResponseEntity<List<PropertyModel>> resp = new ResponseEntity<List<PropertyModel>>(propertiesList, HttpStatus.OK);
+        return resp;
+    }
+
+    //http://localhost:8080/api/v1/properties/update/1
+    @PutMapping("/update/{propertyId}")
+    public ResponseEntity<PropertyModel> updateProperty(@RequestBody PropertyModel propertyModel, @PathVariable Long propertyId) {
+        propertyModel = propertyService.updateProperty(propertyModel, propertyId);
+        ResponseEntity<PropertyModel> resp = new ResponseEntity<PropertyModel>(propertyModel, HttpStatus.CREATED);
         return resp;
     }
 }

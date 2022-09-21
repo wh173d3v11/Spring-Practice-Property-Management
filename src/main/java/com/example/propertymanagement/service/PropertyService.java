@@ -6,7 +6,10 @@ import java.util.List;
 
 //factory design pattern.(seperating impl and interface service class)
 public interface PropertyService {
-    public PropertyModel saveProperty(PropertyModel propertyModel);
+    PropertyModel saveProperty(PropertyModel propertyModel);
 
-    public List<PropertyModel> getAllProperties();
+    List<PropertyModel> getAllProperties();
+
+    PropertyModel updateProperty(PropertyModel propertyModel, Long propertyId);
+
 }

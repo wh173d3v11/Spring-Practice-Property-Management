@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service //-- Singleton purpose.
 public class PropertyServiceImpl implements PropertyService {
@@ -36,5 +37,25 @@ public class PropertyServiceImpl implements PropertyService {
             pmList.add(pmodel);
         }
         return pmList;
+    }
+
+    @Override
+    public PropertyModel updateProperty(PropertyModel propertyModel, Long propertyId) {
+
+        Optional<PropertyEntity> optEn = propertyRepository.findById(propertyId); //data from db
+        if (optEn.isPresent()) {
+            PropertyEntity pe = optEn.get();
+            pe.setTitle(propertyModel.getTitle());
+            pe.setAddress(propertyModel.getAddress());
+            pe.setDescription(propertyModel.getDescription());
+            pe.setOwnerEmail(propertyModel.getOwnerEmail());
+            pe.setOwnerName(propertyModel.getOwnerName());
+            pe.setPrice(propertyModel.getPrice());
+            propertyRepository.save(pe);
+
+            //setting id
+            propertyModel.setId(pe.getId());
+        }
+        return propertyModel;
     }
 }
