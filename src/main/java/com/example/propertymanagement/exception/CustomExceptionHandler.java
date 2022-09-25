@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.util.List;
 
 @ControllerAdvice
-//Centralized Class, going to handle Exeptions.
+//Centralized Class, going to handle Exceptions.
 public class CustomExceptionHandler {
 
     @ExceptionHandler(BusinessException.class/*Type of Exception*/)

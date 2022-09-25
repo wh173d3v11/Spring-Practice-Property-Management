@@ -10,4 +10,9 @@ public interface UserRepository extends CrudRepository<UserEntity, Long> {
     //custom findBy methods
     //we can also use JPQL query also. check here - https://springframework.guru/spring-data-jpa-query/
     Optional<UserEntity> findByOwnerEmailAndPassword(String email, String password);
+
+    //checking, if user Already Exist or not
+    Optional<UserEntity> findByOwnerEmail(String email);
+
+
 }
